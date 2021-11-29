@@ -1,5 +1,5 @@
 # -*- mode: dockerfile; coding: utf-8 -*-
-FROM debian:buster-slim AS build
+FROM debian:bullseye-slim AS build
 RUN apt-get update && apt-get -y --no-install-recommends install \
       build-essential ghostscript texinfo \
  && rm -rf /var/lib/apt/lists/*
@@ -14,7 +14,7 @@ RUN make
 RUN make check
 RUN make install
 
-FROM debian:buster-slim
+FROM debian:bullseye-slim
 RUN apt-get update && apt-get -y --no-install-recommends install \
       gcc libc-dev \
  && rm -rf /var/lib/apt/lists/*
